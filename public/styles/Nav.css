@@ -1,0 +1,19 @@
+.tweeter-nav {
+  display: flex;
+  background-color: #4056A1;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(228, 228, 228);
+  border-bottom-style: solid;
+  color: #FFFFFF;
+  height: 120px;
+  font-family: 'Bungee', cursive;
+  font-weight: normal;
+}
+
+.tweeter-span {
+  padding-left: 1.5em;
+}
+
+.write-span {
+  padding-right: 1.5em;
+}

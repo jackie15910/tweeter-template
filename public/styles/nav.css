@@ -1,0 +1,22 @@
+.tweeter-nav{
+  justify-content: space-between;
+  align-items: center;
+  color: #FFFFFF;
+  height: 120px;
+  display: flex;
+  background-color: #4056A1;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(228, 228, 228);
+  border-bottom-style: solid;
+}
+
+.tweeter-span {
+  font-size: 2em;
+  font-family: 'Bungee', cursive;
+  font-weight: normal;
+  margin-left: 1.5em;
+}
+
+.write-span {
+  margin-right: 1.5em;
+}
