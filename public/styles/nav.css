@@ -1,13 +1,18 @@
-.tweeter-nav{
+.tweeter-nav {
   justify-content: space-between;
   align-items: center;
   color: #FFFFFF;
   height: 120px;
   display: flex;
   background-color: #4056A1;
-  border-bottom-width: 1px;
-  border-bottom-color: rgb(228, 228, 228);
-  border-bottom-style: solid;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.left-section {
+  display: flex;
+  align-items: center;
 }
 
 .tweeter-span {
@@ -17,6 +22,18 @@
   margin-left: 1.5em;
 }
 
-.write-span {
+.right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-right: 1.5em;
+}
+
+.write-span {
+  margin-top: 0.25em;
+  margin-right: 0.5em;
+}
+
+.icon-section {
+  margin-top: 0.25em;
 }

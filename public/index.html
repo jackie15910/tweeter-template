@@ -11,8 +11,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
 
     <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/nav.css?v=1" type="text/css" />
+    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- External JS -->
@@ -25,11 +26,28 @@
   <body>
     <!-- Top nav bar (fixed) -->
     <nav class="tweeter-nav">
-      <span class="tweeter-span">tweeter</span>
-      <span class="write-span">
-        <span class="bold">Write</span> a new tweet</span>
-        <!-- <i class="fa-solid fa-angles-down" style="color: #ff0000;"></i> -->
+      <div class="left-section">
+        <span class="tweeter-span">tweeter</span>
+      </div>
+      <div class="right-section">
+        <span class="write-span">
+          <span class="bold">Write</span> a new tweet
+        </span>
+        <div class="icon-section">
+          <i class="fas fa-angle-double-down" style="color: #ff0000;"></i>
+        </div>
+      </div>
     </nav>
+
+    <header class = "header">
+      <div class = "image">
+          <img src="/images/profile-hex.png"> 
+      </div>
+      <br>
+      <div class = "name">
+          <h2>Your Name</h2>
+      </div>
+  </header>
 
     <!-- Page-specific (main) content here -->
     <main class="container"></main>
