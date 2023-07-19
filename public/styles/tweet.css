@@ -1,0 +1,40 @@
+.tweetContainer {
+  margin: 20px 10px;
+  border-style: solid;
+  border-color: rgb(84, 81, 73);
+  padding: 10px;
+  transition: box-shadow 0.3s;
+}
+
+.tweetContainer:hover {
+  box-shadow: 5px 5px 2px rgba(68, 89, 195, 0.5);
+}
+
+.tweetHeader{
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweet{
+  margin-top: 10px;
+  display: block;
+  font-weight: bold;
+}
+
+.tweetFooter{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweetTime{
+  font-size: 0.7em;
+}
+
+.tweetIcons{
+  color: #1953b8
+}
+
+.tweetIcons i:hover {
+  filter: invert(100%);
+}

@@ -1,0 +1,36 @@
+.new-tweet{
+  margin-top: 20px;
+}
+
+.tweetText{
+  font-size: 1.15em;
+  font-weight: bold;
+}
+
+.textBox{
+  display: block;
+  border: none;
+  outline: none;
+  width: 100%;
+  border-bottom: 5px solid rgb(84, 81, 73);
+  resize: none;
+  background: none;
+  margin-top: 10px;
+  height: 40px;
+  font-size: 1em;
+}
+
+.tweetButtonNumber{
+  font-family: 'Bungee', cursive;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.tweetButton{
+  color: white;
+  background-color: rgb(62, 62, 255);
+  border-style: none;
+  padding: 5px 10px;
+  text-align: center;
+}
