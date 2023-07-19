@@ -86,8 +86,20 @@ $(document).ready(function() {
     event.preventDefault(); // Prevent the default form submission behavior
 
     const formData = $(this).serialize(); // Serialize the form data to a query string
+    const tweetText = $(this).find('#tweet-text').val(); // Get the tweet text
 
-    // Send the form data to the server using AJAX
+    // Perform validation checks
+    if (tweetText.trim() === '' || tweetText.trim() === null) { // If the tweet text is empty or contains only whitespaces
+      alert('Error: Tweet cannot be empty.');
+      return; // Exit the function without submitting the form
+    }
+
+    if (tweetText.length > 140) { // If the tweet exceeds the character limit
+      alert('Error: Tweet cannot exceed 140 characters.');
+      return; // Exit the function without submitting the form
+    }
+
+    // If validation passes, send the form data using AJAX
     $.ajax({
       type: 'POST',
       url: '/tweets', // The URL where you want to send the data

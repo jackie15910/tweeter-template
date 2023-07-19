@@ -5,5 +5,11 @@ $(document).ready(function() { //Checks if DOM is ready
     var remainingCharacters = 140 - tweetLength; //subtracts from character counter
     var $counter = $textarea.closest('.new-tweet').find('.counter'); //Finds the character counter
     $counter.text(remainingCharacters); //Updates it with new value
+
+    if (remainingCharacters < 0) {
+      $counter.css('color', 'red'); // Change the color to red
+    } else {
+      $counter.css('color', ''); // Reset the color to its default (CSS-defined) value
+    }
   });
 });
