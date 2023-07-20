@@ -1,6 +1,4 @@
 $(document).ready(function() {
-  // Function to format the time since a tweet was created
-
   // Sample tweet data
   const data = [
     {
@@ -27,19 +25,25 @@ $(document).ready(function() {
     }
   ];
 
+  const escape = function (str) {
+    let div = document.createElement("div");
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  };
+
   // Function to create the HTML structure for a tweet
   const createTweetElement = (tweetData) => {
-    const tweetHTML = 
-      `<article class="tweetContainer">
+    const tweetHTML = `
+      <article class="tweetContainer">
         <header class="tweetHeader">
           <div class="tweetUser">
-            <img class="tweetAvatar" src="${tweetData.user.avatars}" alt="User Avatar">
-            <span class="tweetName">${tweetData.user.name}</span>
+            <img class="tweetAvatar" src="${escape(tweetData.user.avatars)}" alt="User Avatar">
+            <span class="tweetName">${escape(tweetData.user.name)}</span>
           </div>
-          <span class="tweetHandle">${tweetData.user.handle}</span>
+          <span class="tweetHandle">${escape(tweetData.user.handle)}</span>
         </header>
         <div class="tweet">
-          <p>${tweetData.content.text}</p>
+          <p>${escape(tweetData.content.text)}</p>
         </div>
         <footer class="tweetFooter">
           <span class="tweetTime">${timeago.format(tweetData.created_at)}</span>
@@ -50,15 +54,15 @@ $(document).ready(function() {
           </div>
         </footer>
       </article>`;
-    // Return the HTML structure
     return tweetHTML;
   };
 
   // Function to render an array of tweets to the DOM
   const renderTweets = function(tweets) {
+    $('.tweets').empty();
     for (tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $('.tweets').append($tweet);
+      $('.tweets').prepend($tweet);
     }
   };
 
@@ -66,11 +70,11 @@ $(document).ready(function() {
   const loadTweets = function() {
     $.ajax({
       type: 'GET',
-      url: '/tweets', // The URL to fetch tweets from
-      dataType: 'json', // The data type you expect to receive (JSON in this case)
+      url: '/tweets',
+      dataType: 'json',
       success: function(data) {
         console.log('Tweets successfully loaded!', data);
-        renderTweets(data); // Callback the renderTweets function with the response data
+        renderTweets(data);
       },
       error: function(error) {
         console.error('Error loading tweets:', error);
@@ -78,38 +82,44 @@ $(document).ready(function() {
     });
   };
 
-  // Call the loadTweets function to fetch tweets when the document is ready
   loadTweets();
 
   // Function to handle form submission when the user creates a new tweet
-  const handleFormSubmit = function(event) {
-    event.preventDefault(); // Prevent the default form submission behavior
-
-    const formData = $(this).serialize(); // Serialize the form data to a query string
-    const tweetText = $(this).find('#tweet-text').val(); // Get the tweet text
-
+  const handleFormSubmit = function (event) {
+    event.preventDefault();
+  
+    const formData = $(this).serialize();
+    const tweetText = $(this).find('#tweet-text').val();
+    const $errorMessage = $('.error-message');
+  
+    // Hide the error element before validation
+    $errorMessage.slideUp();
+  
     // Perform validation checks
-    if (tweetText.trim() === '' || tweetText.trim() === null) { // If the tweet text is empty or contains only whitespaces
-      alert('Error: Tweet cannot be empty.');
-      return; // Exit the function without submitting the form
+    if (tweetText.trim() === '' || tweetText.trim() === null) {
+      $errorMessage.html('<i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> Error: Tweet cannot be empty.'); // Insert error message with icon
+      $errorMessage.slideDown();
+      return;
     }
-
-    if (tweetText.length > 140) { // If the tweet exceeds the character limit
-      alert('Error: Tweet cannot exceed 140 characters.');
-      return; // Exit the function without submitting the form
+  
+    if (tweetText.length > 140) {
+      $errorMessage.html('<i class="fa-solid fa-triangle-exclamation" style="color: #ff0000;"></i> Error: Tweet cannot exceed 140 characters.'); // Insert error message with icon
+      $errorMessage.slideDown();
+      return;
     }
-
+  
     // If validation passes, send the form data using AJAX
     $.ajax({
       type: 'POST',
-      url: '/tweets', // The URL where you want to send the data
+      url: '/tweets',
       data: formData,
-      success: function(response) {
+      success: function (response) {
         console.log('Tweet successfully submitted!');
-        console.log(response); // The response from the server
-        // You may choose to update the UI with the new tweet here if needed
+        console.log(response);
+        $('#tweet-text').val('');
+        loadTweets();
       },
-      error: function(error) {
+      error: function (error) {
         console.error('Error submitting tweet:', error);
       }
     });

@@ -27,10 +27,6 @@ body {
   font-weight: bold;
 }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
-
 .container {
   display: block;
   background-color: #f4f1ec;
@@ -39,4 +35,47 @@ body {
 main {
   width: 90%;
   margin: 0 auto;
+}
+
+
+@media screen and (min-width: 1024px) {
+  .header {
+  display: flex;
+  margin: 3em;
+  margin-top: 7em;
+  width: 25%;
+  }
+  .container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  margin: 3em;
+  margin-top: 6em;
+  width: 75%;
+  }
+  .screenLayout{
+  display: flex;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .tweeter-nav {
+    background: none;
+    background-color: none;
+  }
+  .header {
+    margin-top: 0;
+    padding-top: 140px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .tweeter-nav {
+    background: none;
+    background-color: none;
+  }
+  .header {
+    height: 460px;
+    padding-bottom: 25px;
+  }
 }

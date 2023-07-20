@@ -28,9 +28,26 @@
 }
 
 .tweetButton{
+  font-family: 'Bungee', cursive;
   color: white;
   background-color: rgb(62, 62, 255);
   border-style: none;
   padding: 5px 10px;
   text-align: center;
+}
+
+.error-message {
+  background-color: #ffcccc;
+  color: #ff000059;
+  padding: 20px;
+  border: 0.2em solid #ff0000;
+  margin: 1em;
+}
+
+.error-message i {
+  margin-right: 5px; /* Add some space between the error icon and the text */
+}
+
+.error-text {
+  flex: 1; /* Allow the text to take up remaining space */
 }
